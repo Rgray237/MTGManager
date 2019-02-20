@@ -303,6 +303,13 @@ NSImage * curCardImage;
 
 }
 
+- (IBAction)columnDoubleClicked:(id)sender {
+    NSInteger selectedRow = [_tblDecksInCollection selectedRow];
+    [_tblDecksInCollection editColumn:0 row:selectedRow withEvent:NULL select:true];
+    std::cout<<"hello"<<std::endl;
+
+}
+
 
 
 - (IBAction)columnChangeSelected:(id)sender

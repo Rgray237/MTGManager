@@ -1,0 +1,7 @@
+"llanowar elves";2
+"savage smash";2
+"scorchmark";2
+"spikewheel acrobat";2
+"swamp";4
+"undercity's embrace";3
+"wrecking beast";2

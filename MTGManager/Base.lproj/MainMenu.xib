@@ -1108,6 +1108,7 @@
                                                                         </tableColumn>
                                                                     </tableColumns>
                                                                     <connections>
+                                                                        <action trigger="doubleAction" selector="columnDoubleClicked:" target="Voe-Tx-rLC" id="Jls-to-t5G"/>
                                                                         <action selector="deckRowSelected:" target="Voe-Tx-rLC" id="Pan-UB-Mdl"/>
                                                                     </connections>
                                                                 </tableView>

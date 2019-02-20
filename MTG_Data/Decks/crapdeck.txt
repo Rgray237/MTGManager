@@ -1,0 +1,3 @@
+"savage smash";2
+"scorchmark";2
+"spikewheel acrobat";2

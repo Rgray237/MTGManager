@@ -119,13 +119,12 @@ void mtgCollection::applyFilters()
         //if card fits any color filter criteria AND any type filter, it is added to "filtered" vectors
         if (cardFitsAColorFilter&&cardFitsATypeFilter)
         {
-            std::cout<<"fits filter criteria"<<std::endl;
             filteredVectorOfCardQuantities.push_back(std::make_pair(crd.getName(), vectorOfCardDetailsAndQuantities[i].second));
             filteredVectorOfCardDetailsAndQuantities.push_back(std::make_pair(crd, vectorOfCardDetailsAndQuantities[i].second));
         }
         else
         {
-            std::cout<<crd.getName()<<" doesn't fit filters because color is "<<cardFitsAColorFilter<<" and type is "<<cardFitsATypeFilter<<std::endl;
+            //std::cout<<crd.getName()<<" doesn't fit filters because color is "<<cardFitsAColorFilter<<" and type is "<<cardFitsATypeFilter<<std::endl;
         }
     }
 }
@@ -322,12 +321,12 @@ void mtgCollection::generateStatistics()
     for(int i=0;i<vectorOfCardDetailsAndQuantities.size();i++)
     {
         Card crd = vectorOfCardDetailsAndQuantities[i].first;
-        std::cout<<crd.getName()<<" "<<vectorOfCardDetailsAndQuantities[i].second<<std::endl;
+        //std::cout<<crd.getName()<<" "<<vectorOfCardDetailsAndQuantities[i].second<<std::endl;
         for(int j=0;j<5;j++)
         {
             if (crd.colors[j])
             {
-                std::cout<<statsColorCount[j]<<","<<vectorOfCardDetailsAndQuantities[i].second;
+                //std::cout<<statsColorCount[j]<<","<<vectorOfCardDetailsAndQuantities[i].second;
                 statsColorCount[j]+=vectorOfCardDetailsAndQuantities[i].second;
             }
         }

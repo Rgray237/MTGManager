@@ -192,7 +192,6 @@ void CollectionManager::deleteSelectedDeck()
         }
         selectedCollection = NULL;
     }
-        
 }
 
 bool CollectionManager::canRemoveCardFromMainCollection(Card *crd)
