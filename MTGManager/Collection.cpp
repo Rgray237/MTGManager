@@ -335,7 +335,7 @@ void mtgCollection::generateStatistics()
         cmcHistogram[crd.getconvManaCost()]+=vectorOfCardDetailsAndQuantities[i].second;
     }
     
-    //find how peak of histogram
+    //find peak of histogram
     for(int i=0;i<max;i++)
     {
         if (cmcHistogram[i]>maxQtyInHistogram)
@@ -386,6 +386,23 @@ int mtgCollection::filteredQtyAtIndex(int i)
     return filteredVectorOfCardDetailsAndQuantities[i].second;
 }
 
-
+int mtgCollection::getMaxQtyFromHistogram()
+{
+    int max =0;
+    for(int i=0;i<10;i++)
+    {
+        if(cmcHistogram[i]>max)
+            max = cmcHistogram[i];
+    }
+    int numberOf10Plus = 0;
+    for(int i=10;i<20;i++)
+    {
+        numberOf10Plus+=cmcHistogram[i];
+    }
+    if (numberOf10Plus>max)
+        max = numberOf10Plus;
+    
+    return max;
+}
 
 

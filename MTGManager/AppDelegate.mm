@@ -86,7 +86,7 @@ NSImage * curCardImage;
     [self setupTableConnections];
     [self setupComboBoxConnections];
     [self setupImages];
-    [self setupStatisticsConnections];
+    [self updateStatistics];
 }
 
 -(void) setupImages
@@ -95,18 +95,6 @@ NSImage * curCardImage;
     NSImage * img = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithUTF8String:path.c_str()]];
 
     [_imgAllManaIcons setImage:img];
-}
-
--(void) setupStatisticsConnections
-{
-    [_lblGrn setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getGreenCount()]];
-    [_lblBlk setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getBlackCount()]];
-    [_lblBlu setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getBlueCount()]];
-    [_lblRed setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getRedCount()]];
-    [_lblWit setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getWhiteCount()]];
-    [_lblNumUniqueCards setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->numOfUniqueCards()]];
-    [_lblTotalNumCards setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->numOfCards()]];
-    [self drawHistogramOfSelectedDeck];
 }
 
 -(void) setupTableConnections
@@ -216,7 +204,14 @@ NSImage * curCardImage;
 
 -(void) updateStatistics
 {
-    [self setupStatisticsConnections];
+    [_lblGrn setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getGreenCount()]];
+    [_lblBlk setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getBlackCount()]];
+    [_lblBlu setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getBlueCount()]];
+    [_lblRed setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getRedCount()]];
+    [_lblWit setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->getWhiteCount()]];
+    [_lblNumUniqueCards setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->numOfUniqueCards()]];
+    [_lblTotalNumCards setStringValue:[NSString stringWithFormat:@"%d",collectionManager->mainCollection->numOfCards()]];
+    [self drawHistogramOfSelectedDeck];
 }
 
 - (IBAction)addCardToCollection:(id)sender {
@@ -402,7 +397,7 @@ NSImage * curCardImage;
     
     [_boxHistogram addSubview:_histView];
 
-    std::string path = "MTG_Pics/cardBack.jpg";
+    std::string path = "MTG_Pics/bar.png";
     NSImage * img =[[NSImage alloc] initWithContentsOfFile:[NSString stringWithUTF8String:path.c_str()]];
 
     
@@ -413,27 +408,30 @@ NSImage * curCardImage;
     {
         
         float heightPercentage = collectionManager->ratioOfHistogramValueWithPeakOfHistogram(i);
-        float xaxisYPos = _boxHistogram.frame.size.height/10;
-        NSImageView * imgView = [[NSImageView alloc] initWithFrame:CGRectMake(i*_boxHistogram.frame.size.width/11, xaxisYPos, _boxHistogram.frame.size.width/10, heightPercentage*_boxHistogram.frame.size.height)];
+        float xaxisYPos = _histView.frame.size.height/10;
+        NSImageView * imgView = [[NSImageView alloc] initWithFrame:CGRectMake(i*_histView.frame.size.width/11, xaxisYPos, _histView.frame.size.width/11, heightPercentage*_histView.frame.size.height)];
         NSTextField * xaxisLabel = [[NSTextField alloc] initWithFrame:CGRectMake(i*_histView.frame.size.width/11, 0, _histView.frame.size.width/11, 20)];
         if (i==10)
             xaxisLabel.stringValue = @"10+";
        else
            xaxisLabel.stringValue = [self nsStrFromStdStr:std::to_string(i)];
         xaxisLabel.font = [NSFont fontWithName:@"Times-Roman" size:12];
+        xaxisLabel.backgroundColor = [NSColor clearColor];
         [xaxisLabel setBordered:false];
         [xaxisLabel setBezeled:false];
         [xaxisLabel setEditable:false];
+        [xaxisLabel setDrawsBackground:true];
         [xaxisLabel setAlignment:NSTextAlignmentCenter];
-
         
-        NSTextField * txt = [[NSTextField alloc] initWithFrame:CGRectMake(i*_boxHistogram.frame.size.width/11, imgView.frame.size.height/2+xaxisYPos, _boxHistogram.frame.size.width/11, 20)];
+        
+        NSTextField * txt = [[NSTextField alloc] initWithFrame:CGRectMake(i*_histView.frame.size.width/11, imgView.frame.size.height/2+xaxisYPos, _histView.frame.size.width/11, 20)];
         txt.stringValue = [self nsStrFromStdStr:std::to_string(collectionManager->histogramValueOfSelectedDeckAtIndex(i))];
-        txt.backgroundColor = [NSColor redColor];
+        txt.backgroundColor = [NSColor clearColor];
         txt.font = [NSFont fontWithName:@"Times-Roman" size:12];
         [txt setEditable:false];
         [txt setBezeled:false];
         [txt setBordered:false];
+        [txt setDrawsBackground:true];
         [txt setAlignment:NSTextAlignmentCenter];
         
         imgView.imageScaling = NSImageScaleAxesIndependently;

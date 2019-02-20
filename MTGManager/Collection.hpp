@@ -82,7 +82,7 @@ public:
         for(int j=10;j<20;j++)
             cnt+=cmcHistogram[j];
         return cnt;}}
-    int getMaxQtyFromHistogram(){return maxQtyInHistogram;}
+    int getMaxQtyFromHistogram();
 private:
     int statsColorCount[5]={0,0,0,0,0};
     bool typeFilters[numTypeFilters]={1,1,1,1,1};

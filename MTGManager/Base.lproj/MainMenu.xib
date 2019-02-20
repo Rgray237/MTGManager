@@ -1198,11 +1198,11 @@
                                                             <action selector="addDeck:" target="Voe-Tx-rLC" id="Za0-66-xsD"/>
                                                         </connections>
                                                     </button>
-                                                    <box fixedFrame="YES" title="Histogram" translatesAutoresizingMaskIntoConstraints="NO" id="aGo-O2-Act">
-                                                        <rect key="frame" x="25" y="1" width="311" height="203"/>
+                                                    <box fixedFrame="YES" title="Mana Curve" translatesAutoresizingMaskIntoConstraints="NO" id="aGo-O2-Act">
+                                                        <rect key="frame" x="39" y="1" width="297" height="203"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <view key="contentView" id="geO-cn-jLK">
-                                                            <rect key="frame" x="2" y="2" width="307" height="186"/>
+                                                            <rect key="frame" x="2" y="2" width="293" height="186"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         </view>
                                                     </box>
@@ -1217,6 +1217,15 @@
                                                             <action selector="deleteDeck:" target="Voe-Tx-rLC" id="ZY7-7d-lHq"/>
                                                         </connections>
                                                     </button>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTh-M8-X1k">
+                                                        <rect key="frame" x="5" y="6" width="37" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mana" id="jgg-gv-HL1">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
                                                 </subviews>
                                             </view>
                                         </box>
